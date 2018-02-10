@@ -3,6 +3,8 @@ package App::Timestamper::Format::Filter::TS;
 use strict;
 use warnings;
 
+use POSIX qw/ strftime /;
+
 use App::Timestamper::Filter::TS;
 
 sub new
