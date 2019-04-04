@@ -14,23 +14,22 @@ sub new
 
 sub fh_filter
 {
-    my ($self, $in, $out) = @_;
+    my ( $self, $in, $out ) = @_;
 
     my $FMT = $ENV{'TIMESTAMPER_FORMAT'} // '%Y-%m-%d-%H:%M:%S';
 
     my $filt = App::Timestamper::Filter::TS->new;
-    $filt->fh_filter($in,
+    $filt->fh_filter(
+        $in,
         sub {
             my ($l) = @_;
             return $out->(
-                $l =~ s#\A([0-9\.]+)(\t)#strftime($FMT,localtime($1)).$2#er
-            );
+                $l =~ s#\A([0-9\.]+)(\t)#strftime($FMT,localtime($1)).$2#er );
         }
     );
 
     return;
 }
-
 
 1;
 
