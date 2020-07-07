@@ -4,11 +4,10 @@ use 5.014;
 use strict;
 use warnings;
 
-use IO::Handle;
 use Getopt::Long 2.36 qw(GetOptionsFromArray);
 use Pod::Usage qw/pod2usage/;
 
-use App::Timestamper::Format::Filter::TS;
+use App::Timestamper::Format::Filter::TS ();
 
 sub new
 {
@@ -56,7 +55,7 @@ sub _init
 
     if ($version)
     {
-        print "timestamper version $App::Timestamper::VERSION .\n";
+        print "ts-format version $App::Timestamper::VERSION .\n";
         exit(0);
     }
 
@@ -94,8 +93,8 @@ App::Timestamper::Format - prefix lines with formatted timestamps of their arriv
 
 =head1 DESCRIPTION
 
-App::Timestamper is a pure-Perl command line program that filters the input
-so the formatted timestamps based on the C<TIMESTAMPER_FORMAT> env var are
+App::Timestamper::Format is a pure-Perl command line program that filters the input
+so the formatted timestamps based on the C<TIMESTAMPER_FORMAT> environment variable are
 prefixed to the lines based on the time of the arrival.
 
 So if the input was something like:

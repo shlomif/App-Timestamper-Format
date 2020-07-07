@@ -3,15 +3,15 @@
 use strict;
 use warnings;
 
-use App::Timestamper::Format;
+use App::Timestamper::Format ();
 
-App::Timestamper::Format->new({ argv => [@ARGV]})->run;
+App::Timestamper::Format->new( { argv => [@ARGV] } )->run;
 
 __END__
 
 =head1 NAME
 
-App::Timestamper::Format - prefix lines with the timestamps of their arrivals.
+ts-format - prefix lines with formatted timestamps of their arrivals.
 
 =head1 SYNOPSIS
 
@@ -19,9 +19,9 @@ App::Timestamper::Format - prefix lines with the timestamps of their arrivals.
 
 =head1 DESCRIPTION
 
-App::Timestamper is a pure-Perl command line program that filters the input
-so the timestamps (in seconds+fractions since the UNIX epoch) are prefixed
-to the lines based on the time of the arrival.
+App::Timestamper::Format is a pure-Perl command line program that filters the input
+so the formatted timestamps based on the C<TIMESTAMPER_FORMAT> environment variable are
+prefixed to the lines based on the time of the arrival.
 
 So if the input was something like:
 
@@ -31,8 +31,8 @@ So if the input was something like:
 
 It will become something like:
 
-    1435254285.978485482\tFirst Line
-    1435254302.569615087\tSecond Line
-    1435254319.809459781\tThird Line
+    11:12:00\tFirst Line
+    11:12:02\tSecond Line
+    11:12:04\tThird Line
 
 =cut
